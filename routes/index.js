@@ -13,7 +13,7 @@ router.post('/v1/payments/payouts', function(req, res, next) {
     var arr = index.split('-');
 
     //Uncomment this for batch transaction to failed some
-   if (arr[2] == 2 || arr[2] == 1){
+   if (arr[2] == 0 || arr[2] == 3){
         response = {name: 'INSUFFICIENT_FUNDS',debug_id: 'b740133c272c9',code: 422};
         res.status(500).send(response);
     } else {
@@ -23,8 +23,7 @@ router.post('/v1/payments/payouts', function(req, res, next) {
 
     //Uncomment this for successful transaction
     /*response = {batch_header:{payout_batch_id:Math.random(), batch_status:'completed'}};
-    res.status(200).send(response);
-    */
+    res.status(200).send(response);*/
 });
 
 router.post('/nvp', function(req, res, next) {
